@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        Firstname:
+        <span>{{address.firstname}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        Surname:
+        <span>{{address.surname}}</span>
+      </mat-list-item>
+      <mat-list-item>Email:
+        <span>{{address.email}}</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="!address.company.phone == '' ">Phone:
+        <span>{{address.phone}}</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="!address.company.name == '' ">Company Name:
+        <span>{{address.company.name}}</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="!address.company.catchPhrase == '' ">CatchPhrase:
+        <span> {{address.company.catchPhrase}}</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="!address.company.website == '' ">Web Address:
+        <span>{{address.company.website}}</span>
+      </mat-list-item>
+    </mat-list>
+    <mat-list-item>
+      <mat-list *ngFor="let adDress of address.addresses; let i = index">
+        <mat-list-item>Address:
+          <span *ngIf="show">{{i+1}}</span>
+        </mat-list-item>
+        <mat-list-item>Street:
+          <span> {{adDress.street}}</span>
+        </mat-list-item>
+        <mat-list-item>Postcode:
+          <span>{{adDress.postcode}}</span>
+        </mat-list-item>
+        <mat-list-item>City:
+          <span>{{adDress.city}}</span>
+        </mat-list-item>
+        <mat-list-item>Country:
+          <span> {{adDress.country}}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-list-item>
+  </mat-card-content>
+  <mat-card-actions>
+    <a [routerLink]="['/list']" mat-button color="primary">
+      <mat-icon aria-label="arrow_back">arrow_back</mat-icon>
+    </a>
+    <a [routerLink]="['/list/edit', address.id]" mat-button color="primary">
+      <mat-icon aria-label="Edit">edit</mat-icon>
+    </a>
+    <a (click)="openDialog()" mat-button color="warn">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

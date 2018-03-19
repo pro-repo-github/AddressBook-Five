@@ -1,0 +1,23 @@
+form {
+  background: white;
+  padding: 10px 40px;
+}
+fieldset {
+  border:1px solid #795548; 
+  padding: 20px 10px;
+  margin-bottom: 10px; 
+} 
+legend {
+  color: rgba(0, 0, 0, 0.54);
+  padding: 5px 10px; 
+}
+.example-full-width {  
+  border: none;  
+  padding: 0 10px 10px;
+  margin-bottom: 5px;
+  width: 90%;
+}
+
+.buttons-row {
+  padding: 10px 10px 10px -40px;
+}

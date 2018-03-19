@@ -1,0 +1,40 @@
+{
+  "addresses": [
+    {
+      "id": 83,
+      "firstname": "Müller",
+      "surname": "Müller",
+      "street": "Bernstr 3",
+      "postcode": "3000",
+      "city": "Bern",
+      "country": "Schweiz"
+    },
+    {
+      "id": 84,
+      "firstname": "Peter",
+      "surname": "Müller",
+      "street": "Bernstr 3",
+      "postcode": "3000",
+      "city": "Bern",
+      "country": "Schweiz"
+    },
+    {
+      "id": 95,
+      "firstname": "Hassan Mohamed",
+      "surname": "",
+      "street": "",
+      "postcode": "",
+      "city": "",
+      "country": ""
+    },
+    {
+      "id": 96,
+      "firstname": "Fakriya",
+      "surname": "",
+      "street": "",
+      "postcode": "",
+      "city": "",
+      "country": ""
+    }
+  ]
+}

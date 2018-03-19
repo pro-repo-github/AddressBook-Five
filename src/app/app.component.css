@@ -1,0 +1,13 @@
+.example-style {
+    min-width: 150px;
+    max-width: 900px;
+    width: 100%;
+    background:#3E2723;
+    border-radius: 5px; 
+    padding: 20px;
+    margin: auto; 
+  }
+  h2{
+    color: white;
+    padding:  20px 0 0 20px;  
+  }

@@ -1,0 +1,176 @@
+{
+  "addresses": [
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        },
+        {
+          "street": "Musterstraße 17",
+          "postcode": "1234",
+          "city": "Musterstadt",
+          "country": "Schweiz"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 98
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        },
+        {
+          "street": "Musterstraße 17",
+          "postcode": "1234",
+          "city": "Musterstadt",
+          "country": "Schweiz"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 99
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 100
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 102
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 103
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 104
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17 ",
+          "postcode": "1234",
+          "city": "Musterstadt ",
+          "country": "Switzerland"
+        }
+      ],
+      "company": {
+        "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+        "website": "www.mustermann.ch"
+      },
+      "firstname": "Max ",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 105
+    },
+    {
+      "addresses": [
+        {
+          "street": "Musterstraße 17",
+          "postcode": "1234",
+          "city": "Musterstadt",
+          "country": "Schweiz"
+        }
+      ],
+      "company": {
+        "name": "Max Mustermann",
+        "catchPhrase": "",
+        "website": ""
+      },
+      "firstname": "Peter",
+      "surname": "Mustermann",
+      "email": "max.muster@provider.ch",
+      "phone": "0000000000000",
+      "id": 106
+    }
+  ]
+}

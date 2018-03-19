@@ -1,0 +1,96 @@
+<form novalidate [formGroup]="addressForm" (ngSubmit)="saveaddress(addressForm.value)">
+  <fieldset>
+    <legend>1. Kontakt</legend>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Firstname" formControlName="firstname">
+      <mat-error>
+        <app-show-validation-error path="firstname"></app-show-validation-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Surname" formControlName="surname">
+      <mat-error>
+        <app-show-validation-error path="surname"></app-show-validation-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error>
+        <app-show-validation-error path="email"></app-show-validation-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Phone" formControlName="phone">
+    </mat-form-field>
+  </fieldset>
+  <fieldset>
+    <legend>2. addresses</legend>
+    <div formArrayName="addresses">
+      <div *ngFor="let address of addressesArray.controls; let i = index">
+        <div [formGroupName]="i">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Street" formControlName="street">
+            <mat-error>
+              <app-show-validation-error path="addresses.{{i}}.street"></app-show-validation-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Postcode" formControlName="postcode">
+            <mat-error>
+              <app-show-validation-error path="addresses.{{i}}.postcode"></app-show-validation-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="City" formControlName="city">
+            <mat-error>
+              <app-show-validation-error path="addresses.{{i}}.city"></app-show-validation-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Country" formControlName="country">
+            <mat-error>
+              <app-show-validation-error path="addresses.{{i}}.country"></app-show-validation-error>
+            </mat-error>
+          </mat-form-field>
+          <div class="buttons-row">
+            <button mat-button color="primary" (click)="addAddress()"> Add Address </button>
+            <button mat-button color="warn" (click)="removeAddress(i)">
+              Remove Address
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>3. Company</legend>
+    <div formGroupName="company">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error>
+          <app-show-validation-error path="company.name"></app-show-validation-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="CatchPhrase" formControlName="catchPhrase">
+        <mat-error>
+          <app-show-validation-error path="company.catchPhrase"></app-show-validation-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Website" formControlName="website">
+        <mat-error>
+          <app-show-validation-error path="company.website"></app-show-validation-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </fieldset>
+  <div class="buttons-row">
+    <button mat-button color="primary" (click)="cancel()">
+      <mat-icon aria-label="arrow_back">arrow_back</mat-icon>
+    </button>
+    <button type="submit" mat-button color="primary" [disabled]="!addressForm.valid">
+      Save
+    </button>
+  </div>
+</form>

@@ -1,0 +1,58 @@
+<div class="example-container  mat-elevation-z8">
+  <!-- filter -->
+  <div class="example-header">
+    
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <!-- add -->
+      <a routerLink='/list/new' mat-button color="primary" style="padding: 0;">
+        <mat-icon id="add-icon" aria-label="add">add</mat-icon>
+      </a>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- firstname Column -->
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </mat-header-cell>
+      <mat-cell *matCellDef="let Address"> {{Address.firstname}} </mat-cell>
+    </ng-container>
+
+    <!-- surname Column -->
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Surname </mat-header-cell>
+      <mat-cell *matCellDef="let Address"> {{Address.surname}} </mat-cell>
+    </ng-container>
+
+    <!-- company Column -->
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef> Company </mat-header-cell>
+      <mat-cell *matCellDef="let Address"> {{Address.company.name}} </mat-cell>
+    </ng-container>
+
+    <!-- emial Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
+      <mat-cell *matCellDef="let Address"> {{Address.email}} </mat-cell>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>More Details</mat-header-cell>
+      <mat-cell class="button-row" *matCellDef="let Address">
+        <a [routerLink]="['/list/details', Address.id]" mat-button color="primary">
+          <mat-icon aria-label="details">details</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!-- paginator -->
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+  </mat-paginator>
+
+</div>
