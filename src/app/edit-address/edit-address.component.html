@@ -28,6 +28,7 @@
     <div formArrayName="addresses">
       <div *ngFor="let address of addressesArray.controls; let i = index">
         <div [formGroupName]="i">
+            <h4 *ngIf="showAddressNumber">Address: {{i+1}}</h4>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Street" formControlName="street">
             <mat-error>
@@ -55,7 +56,8 @@
           <div class="buttons-row">
             <button mat-button color="primary" (click)="addAddress()"> Add Address </button>
             <button mat-button color="warn" (click)="removeAddress(i)">
-              Remove Address
+              Remove Address<span *ngIf="showAddressNumber">:</span>
+              <span *ngIf="showAddressNumber">{{i+1}}</span>
             </button>
           </div>
         </div>

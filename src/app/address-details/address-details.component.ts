@@ -15,7 +15,7 @@ export class AddressDetailsComponent implements OnInit {
   address: Address = createInitialAddress();
   subscription: Subscription;
   deleteConfirmation: string;
-  show: boolean = false;
+  showAddressNumber: boolean = false;
 
   constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router,
     public dialog: MatDialog) { }
@@ -36,7 +36,7 @@ export class AddressDetailsComponent implements OnInit {
       let addressesArr = this.address.addresses;
       const indexLength = addressesArr.length;
       if (indexLength > 1) {
-        this.show = true;
+        this.showAddressNumber = true;
       }
     });
   }

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { AddressListComponent } from './address-list.component';
 
 describe('AddressListComponent', () => {
@@ -8,7 +8,7 @@ describe('AddressListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddressListComponent ]
+      declarations: [ AddressListComponent ],schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

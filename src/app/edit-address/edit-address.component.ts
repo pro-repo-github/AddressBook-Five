@@ -16,6 +16,7 @@ export class EditAddressComponent implements OnInit {
   addressForm: FormGroup;
   addressesArray: FormArray;
   subscription: Subscription;
+  showAddressNumber: boolean = false;
   constructor(private addressService: AddressService,
     fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.addressForm = fb.group({
@@ -84,6 +85,11 @@ export class EditAddressComponent implements OnInit {
       this.adjustAddressesArray(address.addresses);
       this.addressForm.patchValue(address);
       this.address = address;
+      let addressesArr = this.address.addresses;
+      const indexLength = addressesArr.length;
+      if (indexLength > 1) {
+        this.showAddressNumber = true;
+      }
     });
   }
 

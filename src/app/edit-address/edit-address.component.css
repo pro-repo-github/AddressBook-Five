@@ -17,7 +17,10 @@ legend {
   margin-bottom: 5px;
   width: 90%;
 }
-
 .buttons-row {
-  padding: 10px 10px 10px -40px;
+  margin: 0 0 10px -6px;
 }
+h4{
+  padding-left: 10px;  
+}
+

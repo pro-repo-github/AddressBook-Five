@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog.component';
 
 describe('DeleteConfirmDialogComponent', () => {
@@ -8,7 +8,7 @@ describe('DeleteConfirmDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteConfirmDialogComponent ]
+      declarations: [ DeleteConfirmDialogComponent ],schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

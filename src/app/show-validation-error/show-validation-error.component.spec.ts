@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ShowValidationErrorComponent } from './show-validation-error.component';
 
 describe('ShowValidationErrorComponent', () => {
@@ -8,7 +8,7 @@ describe('ShowValidationErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowValidationErrorComponent ]
+      declarations: [ ShowValidationErrorComponent ],schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

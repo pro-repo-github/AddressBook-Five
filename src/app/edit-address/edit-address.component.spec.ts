@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { EditAddressComponent } from './edit-address.component';
 
 describe('EditAddressComponent', () => {
@@ -8,7 +8,7 @@ describe('EditAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditAddressComponent ]
+      declarations: [ EditAddressComponent ],schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

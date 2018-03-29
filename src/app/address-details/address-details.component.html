@@ -28,7 +28,7 @@
     <mat-list-item>
       <mat-list *ngFor="let adDress of address.addresses; let i = index">
         <mat-list-item>Address:
-          <span *ngIf="show">{{i+1}}</span>
+          <span *ngIf="showAddressNumber">{{i+1}}</span>
         </mat-list-item>
         <mat-list-item>Street:
           <span> {{adDress.street}}</span>
