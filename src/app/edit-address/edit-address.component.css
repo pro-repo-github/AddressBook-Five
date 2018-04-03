@@ -13,14 +13,13 @@ legend {
 }
 .example-full-width {  
   border: none;  
-  padding: 0 10px 10px;
-  margin-bottom: 5px;
+  padding-left: 10px;
   width: 90%;
 }
 .buttons-row {
-  margin: 0 0 10px -6px;
+  margin: 10px 0 10px -6px;
 }
 h4{
-  padding-left: 10px;  
+  padding-left: 10px; 
 }
 

@@ -9,7 +9,7 @@ import { NgForm, FormGroup, FormGroupDirective } from '@angular/forms';
 export class ShowValidationErrorComponent {
 
   @Input('path') path;
-
+  @Input('displayName') displayName;
   constructor(@Optional() private ngForm: NgForm,
     @Optional() private formGroup: FormGroupDirective) {
   }
@@ -32,7 +32,7 @@ export class ShowValidationErrorComponent {
         let message = '';
         switch (code) {
           case 'required':
-            message = "is a required field";
+            message = `${this.displayName} is a required field`;;
             break;
           case 'minlength':
             message = `must contain at least ${error.requiredLength} characters`;
@@ -47,7 +47,7 @@ export class ShowValidationErrorComponent {
             message = `Please enter a valid Url`;
             break;
           default:
-            message = `is not valid`;
+            message = `${this.displayName} is not valid`;
         }
         messages.push(message);
       }

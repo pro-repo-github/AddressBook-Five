@@ -4,19 +4,19 @@
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Firstname" formControlName="firstname">
       <mat-error>
-        <app-show-validation-error path="firstname"></app-show-validation-error>
+        <app-show-validation-error displayName="Firstname" path="firstname"></app-show-validation-error>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Surname" formControlName="surname">
       <mat-error>
-        <app-show-validation-error path="surname"></app-show-validation-error>
+        <app-show-validation-error displayName="Surname" path="surname"></app-show-validation-error>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Email" formControlName="email">
       <mat-error>
-        <app-show-validation-error path="email"></app-show-validation-error>
+        <app-show-validation-error displayName="Email" path="email"></app-show-validation-error>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
@@ -32,25 +32,25 @@
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Street" formControlName="street">
             <mat-error>
-              <app-show-validation-error path="addresses.{{i}}.street"></app-show-validation-error>
+              <app-show-validation-error displayName="Street" path="addresses.{{i}}.street"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Postcode" formControlName="postcode">
             <mat-error>
-              <app-show-validation-error path="addresses.{{i}}.postcode"></app-show-validation-error>
+              <app-show-validation-error displayName="Postcode" path="addresses.{{i}}.postcode"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="City" formControlName="city">
             <mat-error>
-              <app-show-validation-error path="addresses.{{i}}.city"></app-show-validation-error>
+              <app-show-validation-error displayName="City" path="addresses.{{i}}.city"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Country" formControlName="country">
             <mat-error>
-              <app-show-validation-error path="addresses.{{i}}.country"></app-show-validation-error>
+              <app-show-validation-error displayName="Country" path="addresses.{{i}}.country"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <div class="buttons-row">
