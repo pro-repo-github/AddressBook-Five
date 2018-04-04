@@ -11,7 +11,9 @@ legend {
   color: rgba(0, 0, 0, 0.54);
   padding: 5px 10px; 
 }
-.example-full-width {  
+.example-full-width {
+  color: rgba(0, 0, 0, 0.54); 
+  font-size: 12px; 
   border: none;  
   padding-left: 10px;
   width: 90%;
@@ -20,6 +22,7 @@ legend {
   margin: 10px 0 10px -6px;
 }
 h4{
+  color: rgba(0, 0, 0, 0.54);
   padding-left: 10px; 
 }
 

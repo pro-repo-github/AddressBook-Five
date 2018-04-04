@@ -1,7 +1,7 @@
-mat-card {
-    padding: 30px 50px;
+.mat-list-item {
+    color: rgba(0, 0, 0, 0.54);  
 }
 span {
-    font-style: italic;
+    font-size: 12px;
     padding-left: 3px;
 }
