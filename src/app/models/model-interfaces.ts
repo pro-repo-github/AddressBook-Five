@@ -6,7 +6,6 @@ export interface address {
 }
 export interface Company {
   name?: string;
-  catchPhrase?: string;
   website?: string;
 }
 export interface Address {

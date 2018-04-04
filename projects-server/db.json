@@ -9,15 +9,14 @@
           "country": "Switzerland"
         },
         {
-          "street": "Musterstraße 17",
-          "postcode": "1234",
-          "city": "Musterstadt",
+          "street": "Musterhofstraße 35",
+          "postcode": "4321",
+          "city": "Musterdorf",
           "country": "Schweiz"
         }
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -35,15 +34,14 @@
           "country": "Switzerland"
         },
         {
-          "street": "Musterstraße 17",
-          "postcode": "1234",
-          "city": "Musterstadt",
+          "street": "Musterhofstraße 35",
+          "postcode": "4321",
+          "city": "Musterdorf",
           "country": "Schweiz"
         }
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -63,7 +61,6 @@
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -83,7 +80,6 @@
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -103,7 +99,6 @@
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -123,7 +118,6 @@
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -143,7 +137,6 @@
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -163,7 +156,6 @@
       ],
       "company": {
         "name": "Max Mustermann",
-        "catchPhrase": "",
         "website": ""
       },
       "firstname": "Peter",

@@ -28,8 +28,7 @@ export class EditAddressComponent implements OnInit {
         this.createAddressControls()
       ]),
       company: fb.group({
-        name: ['', [Validators.minLength(3)]],
-        catchPhrase: ['', [Validators.minLength(5)]],
+        name: ['', []],
         website: ['', [urlValidator]]
       })
     });
@@ -48,10 +47,10 @@ export class EditAddressComponent implements OnInit {
 
   private createAddressControls(): FormGroup {
     return new FormGroup({
-      street: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      postcode: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      city: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      country: new FormControl('', [Validators.required, Validators.minLength(5)])
+      street: new FormControl('', [Validators.required]),
+      postcode: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required])
     });
   }
 

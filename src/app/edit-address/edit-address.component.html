@@ -1,20 +1,20 @@
 <form novalidate [formGroup]="addressForm" (ngSubmit)="saveaddress(addressForm.value)">
   <fieldset>
-    <legend>1. Kontakt</legend>
+    <legend>1. Contact</legend>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Firstname" formControlName="firstname">
+      <input matInput placeholder="Firstname" formControlName="firstname" required>
       <mat-error>
         <app-show-validation-error displayName="Firstname" path="firstname"></app-show-validation-error>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Surname" formControlName="surname">
+      <input matInput placeholder="Surname" formControlName="surname" required>
       <mat-error>
         <app-show-validation-error displayName="Surname" path="surname"></app-show-validation-error>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email" formControlName="email">
+      <input matInput placeholder="Email" formControlName="email" required>
       <mat-error>
         <app-show-validation-error displayName="Email" path="email"></app-show-validation-error>
       </mat-error>
@@ -24,31 +24,31 @@
     </mat-form-field>
   </fieldset>
   <fieldset>
-    <legend>2. addresses</legend>
+    <legend>2. Addresses</legend>
     <div formArrayName="addresses">
       <div *ngFor="let address of addressesArray.controls; let i = index">
         <div [formGroupName]="i">
             <h4 *ngIf="showAddressNumber">Address: {{i+1}}</h4>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Street" formControlName="street">
+            <input matInput placeholder="Street" formControlName="street" required>
             <mat-error>
               <app-show-validation-error displayName="Street" path="addresses.{{i}}.street"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Postcode" formControlName="postcode">
+            <input matInput placeholder="Postcode" formControlName="postcode" required>
             <mat-error>
               <app-show-validation-error displayName="Postcode" path="addresses.{{i}}.postcode"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="City" formControlName="city">
+            <input matInput placeholder="City" formControlName="city" required>
             <mat-error>
               <app-show-validation-error displayName="City" path="addresses.{{i}}.city"></app-show-validation-error>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Country" formControlName="country">
+            <input matInput placeholder="Country" formControlName="country" required>
             <mat-error>
               <app-show-validation-error displayName="Country" path="addresses.{{i}}.country"></app-show-validation-error>
             </mat-error>
@@ -71,12 +71,6 @@
         <input matInput placeholder="Name" formControlName="name">
         <mat-error>
           <app-show-validation-error path="company.name"></app-show-validation-error>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="CatchPhrase" formControlName="catchPhrase">
-        <mat-error>
-          <app-show-validation-error path="company.catchPhrase"></app-show-validation-error>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
