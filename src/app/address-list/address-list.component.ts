@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, } from '@angular/material';
 import { AddressService } from '../address.service';
-import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-address-list',

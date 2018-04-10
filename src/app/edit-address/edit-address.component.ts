@@ -15,7 +15,7 @@ export class EditAddressComponent implements OnInit {
   address: Address = createInitialAddress();
   addressForm: FormGroup;
   addressesArray: FormArray;
-  subscription: Subscription;
+  paramsSubscription: Subscription;
   showAddressNumber: boolean = false;
   constructor(private addressService: AddressService,
     fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
@@ -34,9 +34,9 @@ export class EditAddressComponent implements OnInit {
     });
     this.addressesArray = <FormArray>this.addressForm.controls['addresses'];
   }
-
+  
   ngOnInit() {
-    this.subscription = this.route.params
+    this.paramsSubscription = this.route.params
       .subscribe(params => {
         const id = (params['id']);
         if (id) {
@@ -44,7 +44,11 @@ export class EditAddressComponent implements OnInit {
         }
       });
   }
-
+  
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe();
+  }
+  
   private createAddressControls(): FormGroup {
     return new FormGroup({
       street: new FormControl('', [Validators.required]),

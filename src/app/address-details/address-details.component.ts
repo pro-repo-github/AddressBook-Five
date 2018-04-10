@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class AddressDetailsComponent implements OnInit {
   address: Address = createInitialAddress();
-  subscription: Subscription;
+  paramsSubscription: Subscription;
   deleteConfirmation: string;
   showAddressNumber: boolean = false;
 
@@ -21,7 +21,7 @@ export class AddressDetailsComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.subscription = this.route.params
+    this.paramsSubscription = this.route.params
       .subscribe(params => {
         const id = (params['id']);
         if (id) {
@@ -29,7 +29,11 @@ export class AddressDetailsComponent implements OnInit {
         }
       });
   }
-
+  
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe();
+  }
+  
   loadaddress(id: number) {
     this.addressService.getAddress(id).subscribe(address => {
       this.address = address;

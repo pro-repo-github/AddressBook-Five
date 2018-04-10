@@ -12,7 +12,7 @@
           "street": "Musterhofstraße 35",
           "postcode": "4321",
           "city": "Musterdorf",
-          "country": "Schweiz"
+          "country": "Switzerland"
         }
       ],
       "company": {
@@ -37,7 +37,7 @@
           "street": "Musterhofstraße 35",
           "postcode": "4321",
           "city": "Musterdorf",
-          "country": "Schweiz"
+          "country": "Switzerland"
         }
       ],
       "company": {
@@ -60,7 +60,7 @@
         }
       ],
       "company": {
-        "name": "Mustermann Company",
+        "name": "ABC Company",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -80,6 +80,7 @@
       ],
       "company": {
         "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -98,7 +99,7 @@
         }
       ],
       "company": {
-        "name": "Mustermann Company",
+        "name": "XYZ Company",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -118,6 +119,7 @@
       ],
       "company": {
         "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -137,6 +139,7 @@
       ],
       "company": {
         "name": "Mustermann Company",
+        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
       "firstname": "Max ",
@@ -159,7 +162,7 @@
         "website": ""
       },
       "firstname": "Peter",
-      "surname": "Mustermann",
+      "surname": "Müller",
       "email": "max.muster@provider.ch",
       "phone": "0000000000000",
       "id": 106

@@ -1,8 +1,7 @@
 <div class="example-container  mat-elevation-z8">
   <!-- filter -->
   <div class="example-header">
-    
-    <mat-form-field >
+    <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
     </mat-form-field>
     <!-- add -->
@@ -27,7 +26,7 @@
 
     <!-- company Column -->
     <ng-container matColumnDef="company">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Company </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef > Company </mat-header-cell>
       <mat-cell *matCellDef="let Address"> {{Address.company.name}} </mat-cell>
     </ng-container>
 

@@ -3,17 +3,18 @@
   flex-direction: column;
   min-width: 300px;
 }
-
 .example-header {
   min-height: 64px;
   background: white;
   padding: 15px 48px 0;
 }
-
+underline {
+    background-color: rgba(0, 0, 0, 0.12);
+}
 .mat-table {
   overflow: auto;
   max-height: 500px;
-  padding: 0 24px;
+  padding: 0 48px;
 }
 .mat-cell{
   font-size: 12px;
@@ -23,11 +24,6 @@
   font-size: 12px;
   width: 100%;
 }
-
-.mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12) ;
-}
-
 #add-icon {
   float: left;
   padding: 6px 0;
@@ -35,3 +31,4 @@
 .mat-paginator {
   padding: 15px 24px 0;
 }
+
