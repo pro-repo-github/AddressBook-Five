@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Address, createInitialAddress } from '../models/model-interfaces';
 import { emailValidator, urlValidator } from '../app-validators';
 import { AddressService } from '../address.service';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-edit-address',
@@ -46,7 +46,9 @@ export class EditAddressComponent implements OnInit {
   }
   
   ngOnDestroy(): void {
-    this.paramsSubscription.unsubscribe();
+    if (this.paramsSubscription) {
+      this.paramsSubscription.unsubscribe();
+    }
   }
   
   private createAddressControls(): FormGroup {

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material';
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 import { AddressService } from '../address.service';
 import { Address, createInitialAddress } from '../models/model-interfaces';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-address-details',
@@ -31,7 +31,9 @@ export class AddressDetailsComponent implements OnInit {
   }
   
   ngOnDestroy(): void {
-    this.paramsSubscription.unsubscribe();
+    if (this.paramsSubscription) {
+      this.paramsSubscription.unsubscribe();
+    }
   }
   
   loadaddress(id: number) {
