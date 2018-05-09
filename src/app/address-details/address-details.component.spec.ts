@@ -69,7 +69,7 @@ describe('AddressDetailsComponent', () => {
     expect(spy).toHaveBeenCalledWith('42');
     expect(component.address).toEqual(chosedaddress);
     expect(component.address.firstname).toBe("Max");
-    let submitEl = fixture.debugElement.query(By.css('mat-list-item'));
-    expect(submitEl.nativeElement.textContent).toContain('Max');
+    let matListItemEl = fixture.debugElement.query(By.css('mat-list-item'));
+    expect(matListItemEl.nativeElement.textContent).toContain('Max');
   }));
 });
