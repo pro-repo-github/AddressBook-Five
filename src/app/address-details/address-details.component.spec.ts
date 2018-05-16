@@ -61,7 +61,7 @@ describe('AddressDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should load the correct address in address-details-mode', fakeAsync(() => {
+  it('should call addressService getAddress, Load the Address and fill mat-card', fakeAsync(() => {
     const spy = spyOn(addressService, 'getAddress').and.returnValue(Observable.of(chosedaddress));
     component.ngOnInit();
     fixture.detectChanges();

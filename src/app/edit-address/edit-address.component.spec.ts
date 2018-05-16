@@ -96,7 +96,7 @@ describe('EditAddressComponent', () => {
     expect(errors['invalidUrl']).toBeFalsy();
   });
 
-  it('should call addressService getAddress, Load chosedAddress and fill the form', async(() => {
+  it('should call addressService getAddress, Load the Address and fill the form', async(() => {
     spyOn(addressService, 'getAddress').and.returnValue(Observable.of(chosedaddress));
     (<any>route.params).next({ id: '42' });
     component.ngOnInit();
