@@ -38,7 +38,7 @@ describe('AddressListComponent', () => {
             },
             "firstname": "Max",
             "surname": "Mustermann",
-            "email": "max.muster@provider.ch",
+            "email": "abc.muster@provider.ch",
             "phone": "0000000000000",
             "id": 100
         },
@@ -101,7 +101,30 @@ describe('AddressListComponent', () => {
         fixture.detectChanges();
         expect(addressService.loadAllAddress).toHaveBeenCalled();
         expect(component.dataSource.filteredData).toEqual(addressArray);
-        expect(fixture.debugElement.nativeElement.querySelector('mat-table')).toBeDefined();
     }));
-
+    it('matCells innertext should equal loaded address properties', fakeAsync(() => {
+        spyOn(addressService, "loadAllAddress").and.callFake(function () {
+            component.dataSource = new MatTableDataSource(addressArray);
+            component.dataSource.paginator = component.paginator;
+            component.dataSource.sort = component.sort;
+            return Observable.from([]);
+        });
+        component.ngOnInit();
+        tick();
+        fixture.detectChanges();
+        let matTable = fixture.debugElement.nativeElement.querySelector('mat-table');
+        let matRow = matTable.querySelector('mat-row');
+        // Firstname
+        let matCell = matRow.querySelector('.mat-column-firstname');
+        expect(matCell.innerText).toBe('Max');
+        // Surname
+        matCell = matRow.querySelector('.mat-column-surname');
+        expect(matCell.innerText).toBe('Mustermann');
+        // Company
+        matCell = matRow.querySelector('.mat-column-company');
+        expect(matCell.innerText).toBe('ABC Company');
+        // Email
+        matCell = matRow.querySelector('.mat-column-email');
+        expect(matCell.innerText).toBe('abc.muster@provider.ch');
+    }));
 });
