@@ -27,7 +27,6 @@ describe('AddressDetailsComponent', () => {
     ],
     "company": {
       "name": "Mustermann Company",
-      "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
       "website": "www.mustermann.ch"
     },
     "firstname": "Max",
@@ -61,15 +60,38 @@ describe('AddressDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should call addressService getAddress, Load the Address and fill mat-card', fakeAsync(() => {
+
+  it('should call addressService getAddress with the address_id and load the Address', fakeAsync(() => {
     const spy = spyOn(addressService, 'getAddress').and.returnValue(Observable.of(chosedaddress));
     component.ngOnInit();
-    fixture.detectChanges();
     tick();
+    fixture.detectChanges();
     expect(spy).toHaveBeenCalledWith('42');
     expect(component.address).toEqual(chosedaddress);
     expect(component.address.firstname).toBe("Max");
-    let matListItem = fixture.debugElement.query(By.css('mat-list-item'));
-    expect(matListItem.nativeElement.textContent).toContain('Max');
+  }));
+
+  xit('should call addressService getAddress, Load the Address and fill mat-card-content mat-list:first-child', fakeAsync(() => {
+   spyOn(addressService, 'getAddress').and.returnValue(Observable.of(chosedaddress));
+    component.ngOnInit();
+    tick();
+    fixture.detectChanges();
+    let matList = fixture.debugElement.query(By.css('.mat-list:first-child')).nativeElement;
+    //firstname
+    let spanTextContent = matList.querySelector('.mat-list-item:first-child .mat-list-item-content span').textContent;
+    expect(spanTextContent).toBe('Max');
+    //surname
+    spanTextContent = matList.querySelector('.mat-list-item:nth-last-child(4) .mat-list-item-content span').textContent;
+    expect(spanTextContent).toBe('Mustermann');
+    //email
+    spanTextContent = matList.querySelector('.mat-list-item:nth-last-child(3) .mat-list-item-content span').textContent;
+    expect(spanTextContent).toBe('max.muster@provider.ch');
+    //company name
+    spanTextContent = matList.querySelector('.mat-list-item:nth-last-child(2) .mat-list-item-content span').textContent;
+    expect(spanTextContent).toBe('Mustermann Company');
+    //company website
+    spanTextContent = matList.querySelector('.mat-list-item:last-child .mat-list-item-content span').textContent;
+    expect(spanTextContent).toBe('www.mustermann.ch');
+
   }));
 });
