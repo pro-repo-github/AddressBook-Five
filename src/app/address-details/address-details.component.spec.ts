@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 describe('AddressDetailsComponent', () => {
   let component: AddressDetailsComponent;
@@ -42,7 +44,9 @@ describe('AddressDetailsComponent', () => {
       imports: [
         HttpModule,
         RouterTestingModule.withRoutes([]),
-        MatDialogModule
+        MatDialogModule,
+        MatCardModule,
+        MatListModule
       ], providers: [AddressService]
     })
       .compileComponents();
@@ -71,7 +75,7 @@ describe('AddressDetailsComponent', () => {
     expect(component.address.firstname).toBe("Max");
   }));
 
-  xit('should call addressService getAddress, Load the Address and fill mat-card-content mat-list:first-child', fakeAsync(() => {
+  it('should call addressService getAddress, Load the Address and fill mat-card-content mat-list:first-child', fakeAsync(() => {
    spyOn(addressService, 'getAddress').and.returnValue(Observable.of(chosedaddress));
     component.ngOnInit();
     tick();
