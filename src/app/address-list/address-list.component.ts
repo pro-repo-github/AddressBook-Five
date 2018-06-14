@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit  } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, } from '@angular/material';
 import { AddressService } from '../address.service';
 
@@ -7,24 +7,26 @@ import { AddressService } from '../address.service';
   templateUrl: './address-list.component.html',
   styleUrls: ['./address-list.component.css']
 })
-export class AddressListComponent implements OnInit {
+export class AddressListComponent implements AfterViewInit {
   dataSource: any;
   displayedColumns = ['firstname', 'surname', 'company', 'email', 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private addressService: AddressService) { }
+  constructor(private addressService: AddressService, private cdr: ChangeDetectorRef) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.loadAllAddress();
+    this.cdr.detectChanges();
   }
 
   loadAllAddress() {
-    this.addressService.loadAllAddress().subscribe((addresses) => {
+    this.addressService.addresses$.subscribe((addresses) => {
       this.dataSource = new MatTableDataSource(addresses);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+
   }
 
   deleteAddress(id: number) {

@@ -25,10 +25,10 @@ export class AddressesStore {
       case EDIT:
         return addresses.map(address => {
           const editedAddress = action.data;
-          if (address.id !== editedAddress){
+          if (address.id !== editedAddress.id){
             return address;
           }
-          return editedAddress      });
+          return editedAddress });
       case REMOVE:
         return addresses.filter(address => address.id !== action.data.id);
       default:

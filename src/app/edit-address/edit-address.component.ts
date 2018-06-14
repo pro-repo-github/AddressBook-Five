@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Address, createInitialAddress } from '../models/model-interfaces';
 import { emailValidator, urlValidator } from '../app-validators';
 import { AddressService } from '../address.service';
+import { AddressesStore, ADD, EDIT } from '../addressesStore';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -17,7 +18,7 @@ export class EditAddressComponent implements OnInit {
   addressesArray: FormArray;
   paramsSubscription: Subscription;
   showAddressNumber: boolean = false;
-  constructor(private addressService: AddressService,
+  constructor(private addressService: AddressService, private addressesStore: AddressesStore,
     fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.addressForm = fb.group({
       firstname: ['', [Validators.required]],
@@ -74,11 +75,13 @@ export class EditAddressComponent implements OnInit {
     Object.assign(this.address, value);
     if (this.address.id) {
       this.addressService.updateAddress(this.address).subscribe(address => {
+        this.addressesStore.dispatch({ type: EDIT, data: address });
         const relativeUrl = '../../details/' + address.id;
         this.router.navigate([relativeUrl], { relativeTo: this.route });
       });
     } else {
       this.addressService.createAddress(this.address).subscribe(address => {
+        this.addressesStore.dispatch({ type: ADD, data: address });
         const relativeUrl = '../details/' + address.id;
         this.router.navigate([relativeUrl], { relativeTo: this.route });
       });

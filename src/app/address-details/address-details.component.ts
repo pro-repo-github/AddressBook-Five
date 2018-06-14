@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 import { AddressService } from '../address.service';
+import { AddressesStore, REMOVE } from '../addressesStore';
 import { Address, createInitialAddress } from '../models/model-interfaces';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -17,7 +18,7 @@ export class AddressDetailsComponent implements OnInit {
   deleteConfirmation: string;
   showAddressNumber: boolean = false;
 
-  constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router,
+  constructor(private addressService: AddressService, private addressesStore: AddressesStore, private route: ActivatedRoute, private router: Router,
     public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -49,6 +50,7 @@ export class AddressDetailsComponent implements OnInit {
 
   deleteAddress(id: number) {
     this.addressService.deleteAddress(id).subscribe(address => {
+      this.addressesStore.dispatch({ type: REMOVE, data: { id: id } });
       const relativeUrl = '../..';
       this.router.navigate([relativeUrl], { relativeTo: this.route });
     });

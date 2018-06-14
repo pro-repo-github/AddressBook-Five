@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Address } from './models/model-interfaces';
+import { AddressesStore, LOAD } from './addressesStore';
 import { Http, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 const BASE_URL = 'http://localhost:3000/api/addresses/';
 @Injectable()
 export class AddressService {
-
-  constructor(private http: Http) { }
-
-  loadAllAddress(): Observable<Address[]> {
-    return this.http.get(BASE_URL)
-      .map(res => res.json());
+  addresses$: Observable<Address[]>;
+  
+  constructor(private http: Http, private addressesStore: AddressesStore) {
+    this.http.get(BASE_URL).map(res => res.json())
+      .subscribe((tasks) => {
+        this.addressesStore.dispatch({type: LOAD, data: tasks});
+      });
+   this.addresses$ = addressesStore.items$;
   }
 
   getAddress(id: number | string): Observable<Address> {

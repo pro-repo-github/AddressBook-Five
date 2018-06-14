@@ -8,6 +8,7 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { AddressService } from './address.service';
+import { AddressesStore, REMOVE } from './addressesStore';
 import { CustomMaterialModule } from './custom-material.Module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowValidationErrorComponent } from './show-validation-error/show-validation-error.component';
@@ -34,7 +35,7 @@ import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-con
     CustomMaterialModule
   ],
   entryComponents: [AddressDetailsComponent, DeleteConfirmDialogComponent],
-  providers: [AddressService],
+  providers: [AddressService, AddressesStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
