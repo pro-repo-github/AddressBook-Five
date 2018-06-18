@@ -6,8 +6,22 @@
     border-radius: 5px; 
     padding: 20px;
     margin: auto; 
-  }
-  h2{
+}
+
+.mat-toolbar{
+    padding: 10px 0;
+}
+
+h2{
+    margin-right: 40px;
+    padding-left: 29px;  
+}
+.button-Active-color{
+    color:#D50000;  
+}
+
+#badge{
+    font-size:14px;
     color: white;
-    padding:  20px 0 0 20px;  
-  }
+    margin-left: 40px; 
+}

@@ -13,6 +13,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatSortModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule
   ],
   exports: [
     BrowserAnimationsModule, 
@@ -45,7 +48,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatSortModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule
   ]
 })
 export class CustomMaterialModule { }
