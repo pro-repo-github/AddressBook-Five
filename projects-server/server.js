@@ -9,7 +9,7 @@ server.set('superSecret', "mpwctmwprtwptwcwetr"); // secret variable
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(jsonServer.defaults())
-server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
 var http = require('http').Server(server);
@@ -21,7 +21,7 @@ var args = process.argv.slice(2);
 args.forEach(function (val, index, array) {
   if (val) {
     var splitted = val.split("=");
-    if (splitted.length == 2){
+    if (splitted.length == 2) {
       var key = splitted[0];
       var value = splitted[1];
       if (key == 'db') {
@@ -42,11 +42,11 @@ var io = require('socket.io')(3001);
 var _socketMap = {};
 io.on('connection', function (socket) {
   _socketMap[socket.id] = socket;
-  socket.on('broadcast_task', function (data) {
+  socket.on('broadcast_address', function (address) {
     for (var socketKey in _socketMap) {
       var broadcastTo = _socketMap[socketKey];
       if (socket.id !== broadcastTo.id) {
-        broadcastTo.emit('task_saved', data)
+        broadcastTo.emit('address_saved', address);
       }
     }
   });
@@ -78,7 +78,7 @@ if (secured) {
         token: token
       });
     } else {
-      res.json({success: false, message: 'Authentication failed. User not found.'});
+      res.json({ success: false, message: 'Authentication failed. User not found.' });
     }
 
   });
@@ -95,7 +95,7 @@ if (secured) {
       // verifies secret and checks exp
       jwt.verify(token, server.get('superSecret'), function (err, decoded) {
         if (err) {
-          return res.json({success: false, message: 'Failed to authenticate token.'});
+          return res.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
           // if everything is good, save to request for use in other routes
           req.decoded = decoded;

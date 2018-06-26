@@ -38,8 +38,8 @@
         "name": "ABC Company",
         "website": "www.mustermann.ch"
       },
-      "firstname": "Max ",
-      "surname": "Mustermann",
+      "firstname": "Markus",
+      "surname": "Meier",
       "email": "max.muster@provider.ch",
       "phone": "0000000000000",
       "id": 100
@@ -55,11 +55,10 @@
       ],
       "company": {
         "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "website": "www.mustermann.ch"
       },
-      "firstname": "Max ",
-      "surname": "Mustermann",
+      "firstname": "Frank",
+      "surname": "Muller",
       "email": "max.muster@provider.ch",
       "phone": "0000000000000",
       "id": 102
@@ -77,50 +76,11 @@
         "name": "XYZ Company",
         "website": "www.mustermann.ch"
       },
-      "firstname": "Max ",
-      "surname": "Mustermann",
+      "firstname": "Peter",
+      "surname": "Imhof",
       "email": "max.muster@provider.ch",
       "phone": "0000000000000",
       "id": 103
-    },
-    {
-      "addresses": [
-        {
-          "street": "Musterstraße 17 ",
-          "postcode": "1234",
-          "city": "Musterstadt ",
-          "country": "Switzerland"
-        }
-      ],
-      "company": {
-        "name": "Mustermann Company",
-        "catchPhrase": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
-        "website": "www.mustermann.ch"
-      },
-      "firstname": "Max ",
-      "surname": "Mustermann",
-      "email": "max.muster@provider.ch",
-      "phone": "0000000000000",
-      "id": 105
-    },
-    {
-      "addresses": [
-        {
-          "street": "Musterstraße 17",
-          "postcode": "1234",
-          "city": "Musterstadt",
-          "country": "Schweiz"
-        }
-      ],
-      "company": {
-        "name": "Max Mustermann",
-        "website": ""
-      },
-      "firstname": "Peter",
-      "surname": "Müller",
-      "email": "max.muster@provider.ch",
-      "phone": "0000000000000",
-      "id": 106
     }
   ]
 }

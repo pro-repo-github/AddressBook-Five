@@ -35,7 +35,7 @@ export class EditAddressComponent implements OnInit {
     });
     this.addressesArray = <FormArray>this.addressForm.controls['addresses'];
   }
-  
+
   ngOnInit() {
     this.paramsSubscription = this.route.params
       .subscribe(params => {
@@ -45,13 +45,13 @@ export class EditAddressComponent implements OnInit {
         }
       });
   }
-  
+
   ngOnDestroy(): void {
     if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
     }
   }
-  
+
   private createAddressControls(): FormGroup {
     return new FormGroup({
       street: new FormControl('', [Validators.required]),
@@ -76,12 +76,14 @@ export class EditAddressComponent implements OnInit {
     if (this.address.id) {
       this.addressService.updateAddress(this.address).subscribe(address => {
         this.addressesStore.dispatch({ type: EDIT, data: address });
+        this.addressService.socket.emit('broadcast_address', { type: EDIT, data: address });
         const relativeUrl = '../../details/' + address.id;
         this.router.navigate([relativeUrl], { relativeTo: this.route });
       });
     } else {
       this.addressService.createAddress(this.address).subscribe(address => {
         this.addressesStore.dispatch({ type: ADD, data: address });
+        this.addressService.socket.emit('broadcast_address', { type: ADD, data: address });
         const relativeUrl = '../details/' + address.id;
         this.router.navigate([relativeUrl], { relativeTo: this.route });
       });

@@ -1,20 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Address } from './models/model-interfaces';
-import { AddressesStore, LOAD } from './addressesStore';
+import { AddressesStore, LOAD, ADD } from './addressesStore';
 import { Http, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/fromEvent';
+import { SOCKET_IO } from './app.tokens';
+const WEB_SOCKET_URL = 'http://localhost:3001';
 const BASE_URL = 'http://localhost:3000/api/addresses/';
 @Injectable()
 export class AddressService {
   addresses$: Observable<Address[]>;
-  
-  constructor(private http: Http, private addressesStore: AddressesStore) {
+  socket: SocketIOClient.Socket;
+
+  constructor(private http: Http, private addressesStore: AddressesStore, @Inject(SOCKET_IO) socketIO) {
     this.http.get(BASE_URL).map(res => res.json())
       .subscribe((tasks) => {
-        this.addressesStore.dispatch({type: LOAD, data: tasks});
+        this.addressesStore.dispatch({ type: LOAD, data: tasks });
       });
-   this.addresses$ = addressesStore.items$;
+    this.addresses$ = addressesStore.items$;
+    this.socket = socketIO(WEB_SOCKET_URL);
+    Observable.fromEvent(this.socket, 'address_saved')
+      .subscribe((address) => {
+        this.addressesStore.dispatch(address);
+      });
   }
 
   getAddress(id: number | string): Observable<Address> {

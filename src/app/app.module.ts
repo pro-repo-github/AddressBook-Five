@@ -14,6 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowValidationErrorComponent } from './show-validation-error/show-validation-error.component';
 import { AddressDetailsComponent } from './address-details/address-details.component';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
+import * as io from 'socket.io-client';
+import { SOCKET_IO } from './app.tokens';
+
+export function socketIoFactory() {
+  return io;
+}
 
 @NgModule({
   declarations: [
@@ -35,7 +41,7 @@ import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-con
     CustomMaterialModule
   ],
   entryComponents: [AddressDetailsComponent, DeleteConfirmDialogComponent],
-  providers: [AddressService, AddressesStore],
+  providers: [AddressService, AddressesStore, { provide: SOCKET_IO, useFactory: socketIoFactory }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

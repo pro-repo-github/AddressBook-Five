@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './address-details.component.html',
   styleUrls: ['./address-details.component.css']
 })
+
 export class AddressDetailsComponent implements OnInit {
   address: Address = createInitialAddress();
   paramsSubscription: Subscription;
@@ -30,13 +31,13 @@ export class AddressDetailsComponent implements OnInit {
         }
       });
   }
-  
+
   ngOnDestroy(): void {
     if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
     }
   }
-  
+
   loadaddress(id: number) {
     this.addressService.getAddress(id).subscribe(address => {
       this.address = address;
@@ -51,6 +52,7 @@ export class AddressDetailsComponent implements OnInit {
   deleteAddress(id: number) {
     this.addressService.deleteAddress(id).subscribe(address => {
       this.addressesStore.dispatch({ type: REMOVE, data: { id: id } });
+      this.addressService.socket.emit('broadcast_address', { type: REMOVE, data: { id: id } });
       const relativeUrl = '../..';
       this.router.navigate([relativeUrl], { relativeTo: this.route });
     });
