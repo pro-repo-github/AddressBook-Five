@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material';
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 import { AddressService } from '../address.service';
 import { AddressesStore, REMOVE } from '../addressesStore';
-import { Address, createInitialAddress } from '../models/model-interfaces';
+import { DataService } from '../data.service';
+import { Address } from '../models/model-interfaces';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -14,46 +15,38 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 export class AddressDetailsComponent implements OnInit {
-  address: Address = createInitialAddress();
-  paramsSubscription: Subscription;
+  address: Address;
+  dataServiceSubscription: Subscription;
   deleteConfirmation: string;
   showAddressNumber: boolean = false;
 
   constructor(private addressService: AddressService, private addressesStore: AddressesStore, private route: ActivatedRoute, private router: Router,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, private data: DataService) { }
 
   ngOnInit() {
-    this.paramsSubscription = this.route.params
-      .subscribe(params => {
-        const id = (params['id']);
-        if (id) {
-          this.loadaddress(id);
-        }
-      });
+   this.dataServiceSubscription = this.data.currentMessage.subscribe(message => { this.loadaddress(message); }); 
   }
 
   ngOnDestroy(): void {
-    if (this.paramsSubscription) {
-      this.paramsSubscription.unsubscribe();
+    if (this.dataServiceSubscription) {
+      this.dataServiceSubscription.unsubscribe();
     }
   }
 
-  loadaddress(id: number) {
-    this.addressService.getAddress(id).subscribe(address => {
-      this.address = address;
-      let addressesArr = this.address.addresses;
-      const indexLength = addressesArr.length;
-      if (indexLength > 1) {
-        this.showAddressNumber = true;
-      }
-    });
+  loadaddress(address) {
+    this.address = address;
+    let addressesArr = this.address.addresses;
+    const indexLength = addressesArr.length;
+    if (indexLength > 1) {
+      this.showAddressNumber = true;
+    }
   }
 
   deleteAddress(id: number) {
     this.addressService.deleteAddress(id).subscribe(address => {
       this.addressesStore.dispatch({ type: REMOVE, data: { id: id } });
       this.addressService.socket.emit('broadcast_address', { type: REMOVE, data: { id: id } });
-      const relativeUrl = '../..';
+      const relativeUrl = '..';
       this.router.navigate([relativeUrl], { relativeTo: this.route });
     });
   }

@@ -8,7 +8,8 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { AddressService } from './address.service';
-import { AddressesStore, REMOVE } from './addressesStore';
+import { AddressesStore } from './addressesStore';
+import { DataService } from './data.service';
 import { CustomMaterialModule } from './custom-material.Module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowValidationErrorComponent } from './show-validation-error/show-validation-error.component';
@@ -41,7 +42,7 @@ export function socketIoFactory() {
     CustomMaterialModule
   ],
   entryComponents: [AddressDetailsComponent, DeleteConfirmDialogComponent],
-  providers: [AddressService, AddressesStore, { provide: SOCKET_IO, useFactory: socketIoFactory }],
+  providers: [AddressService, DataService, AddressesStore, { provide: SOCKET_IO, useFactory: socketIoFactory }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

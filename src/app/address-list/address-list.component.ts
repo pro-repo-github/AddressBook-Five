@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit  } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, } from '@angular/material';
 import { AddressService } from '../address.service';
+import { DataService } from '../data.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-address-list',
@@ -13,7 +15,8 @@ export class AddressListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private addressService: AddressService, private cdr: ChangeDetectorRef) { }
+  constructor(private addressService: AddressService, private cdr: ChangeDetectorRef,
+    private data: DataService, private router: Router) { }
 
   ngAfterViewInit() {
     this.loadAllAddress();
@@ -30,15 +33,20 @@ export class AddressListComponent implements AfterViewInit {
   }
 
   deleteAddress(id: number) {
-    this.addressService.deleteAddress(id).subscribe(address => {
+    this.addressService.deleteAddress(id).subscribe(() => {
       this.loadAllAddress();
     });
   }
 
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  newMessage(address) {
+    this.data.changeMessage(address);
+    this.router.navigate(['/list/details']);
   }
 }
 

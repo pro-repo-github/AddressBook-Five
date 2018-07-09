@@ -12,9 +12,9 @@ export const routes: Routes = [{ path: 'home', component: HomeComponent },
   children: [{
     path: '', component: AddressListComponent
   },
-  { path: 'details/:id', component: AddressDetailsComponent },
-  { path: 'edit/:id', component: EditAddressComponent },
-  { path: 'new', component: EditAddressComponent }]
+  { path: 'details', component: AddressDetailsComponent },
+  { path: 'edit', component: EditAddressComponent },
+  { path: 'new/:flag', component: EditAddressComponent }]
 },
 { path: 'about', component: AboutComponent }];
 

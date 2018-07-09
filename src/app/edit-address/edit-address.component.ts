@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormControl, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { FormGroup, FormArray, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Address, createInitialAddress } from '../models/model-interfaces';
 import { emailValidator, urlValidator } from '../app-validators';
 import { AddressService } from '../address.service';
+import { DataService } from '../data.service';
 import { AddressesStore, ADD, EDIT } from '../addressesStore';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -16,10 +17,11 @@ export class EditAddressComponent implements OnInit {
   address: Address = createInitialAddress();
   addressForm: FormGroup;
   addressesArray: FormArray;
+  dataServiceSubscription: Subscription;
   paramsSubscription: Subscription;
   showAddressNumber: boolean = false;
   constructor(private addressService: AddressService, private addressesStore: AddressesStore,
-    fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+    fb: FormBuilder, private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.addressForm = fb.group({
       firstname: ['', [Validators.required]],
       surname: ['', [Validators.required]],
@@ -39,14 +41,24 @@ export class EditAddressComponent implements OnInit {
   ngOnInit() {
     this.paramsSubscription = this.route.params
       .subscribe(params => {
-        const id = (params['id']);
-        if (id) {
-          this.loadaddress(id);
+        const flag = (params['flag']);
+        if (!flag) {
+          this.dataServiceSubscription = this.data.currentMessage.subscribe(message => { this.loadaddress(message); });
         }
       });
   }
+ 
+  checkCount = 0;
+
+  ngOnChanges(changes: SimpleChanges) {
+   //e console.log('Address changed', changes['address'].currentValue);
+    console.log('checkCount', this.checkCount++);
+  }
 
   ngOnDestroy(): void {
+    if (this.dataServiceSubscription) {
+      this.dataServiceSubscription.unsubscribe();
+    }
     if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
     }
@@ -77,30 +89,28 @@ export class EditAddressComponent implements OnInit {
       this.addressService.updateAddress(this.address).subscribe(address => {
         this.addressesStore.dispatch({ type: EDIT, data: address });
         this.addressService.socket.emit('broadcast_address', { type: EDIT, data: address });
-        const relativeUrl = '../../details/' + address.id;
-        this.router.navigate([relativeUrl], { relativeTo: this.route });
+        const relativeUrl = '../details/';
+        this.newMessage(address, relativeUrl);
       });
     } else {
       this.addressService.createAddress(this.address).subscribe(address => {
         this.addressesStore.dispatch({ type: ADD, data: address });
         this.addressService.socket.emit('broadcast_address', { type: ADD, data: address });
-        const relativeUrl = '../details/' + address.id;
-        this.router.navigate([relativeUrl], { relativeTo: this.route });
+        const relativeUrl = '../../details';
+        this.newMessage(address, relativeUrl);
       });
     }
   }
 
-  loadaddress(id: number) {
-    this.addressService.getAddress(id).subscribe(address => {
-      this.adjustAddressesArray(address.addresses);
-      this.addressForm.patchValue(address);
-      this.address = address;
-      let addressesArr = this.address.addresses;
-      const indexLength = addressesArr.length;
-      if (indexLength > 1) {
-        this.showAddressNumber = true;
-      }
-    });
+  loadaddress(address) {
+    this.adjustAddressesArray(address.addresses);
+    this.addressForm.patchValue(address);
+    this.address = address;
+    let addressesArr = this.address.addresses;
+    const indexLength = addressesArr.length;
+    if (indexLength > 1) {
+      this.showAddressNumber = true;
+    }
   }
 
   private adjustAddressesArray(addresses: any[]) {
@@ -113,10 +123,9 @@ export class EditAddressComponent implements OnInit {
     }
   }
 
-  cancel() {
-    const relativeUrl = this.router.url.includes('new') ? '..' : '../../details/' + this.address.id;
-    this.router.navigate([relativeUrl], { relativeTo: this.route });
-    return false;
+  newMessage(address, url) {
+    this.data.changeMessage(address);
+    this.router.navigate([url], { relativeTo: this.route });
   }
 
 }

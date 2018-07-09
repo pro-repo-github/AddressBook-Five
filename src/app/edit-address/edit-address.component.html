@@ -82,7 +82,7 @@
     </div>
   </fieldset>
   <div class="buttons-row">
-    <button mat-button color="primary" (click)="cancel()">
+    <button mat-button color="primary" [routerLink]="['/list']">
       <mat-icon aria-label="arrow_back">arrow_back</mat-icon>
     </button>
     <button type="submit" mat-button color="primary" [disabled]="!addressForm.valid">
