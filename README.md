@@ -1,7 +1,7 @@
 AddressBookFive prototype
 =====================
 Single-page application which manage the CRUD operations.
-technologies: Angular, Angular Material 5, Json Server.
+technologies: Angular, Angular Material 5, Rxjs, Redux, Json Server.
  
 ## TODO 
 install Nodejs and run in side the main application folder the command *npm install* to install all dependencies from package.json.

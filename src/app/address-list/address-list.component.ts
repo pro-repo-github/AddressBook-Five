@@ -18,10 +18,14 @@ export class AddressListComponent implements AfterViewInit {
   constructor(private addressService: AddressService, private cdr: ChangeDetectorRef,
     private data: DataService, private router: Router) { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.loadAllAddress();
+  }
+
+  ngAfterViewInit() {
     this.cdr.detectChanges();
   }
+
 
   loadAllAddress() {
     this.addressService.addresses$.subscribe((addresses) => {
@@ -44,7 +48,7 @@ export class AddressListComponent implements AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 
-  newMessage(address) {
+  newMessage(address: any) {
     this.data.changeMessage(address);
     this.router.navigate(['/list/details']);
   }
