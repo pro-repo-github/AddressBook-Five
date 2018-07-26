@@ -89,15 +89,15 @@ export class EditAddressComponent implements OnInit {
       this.addressService.updateAddress(this.address).subscribe(address => {
         this.addressesStore.dispatch({ type: EDIT, data: address });
         this.addressService.socket.emit('broadcast_address', { type: EDIT, data: address });
-        const relativeUrl = '../details/';
-        this.newMessage(address, relativeUrl);
+        const url = '/details/';
+        this.newMessage(address, url);
       });
     } else {
       this.addressService.createAddress(this.address).subscribe(address => {
         this.addressesStore.dispatch({ type: ADD, data: address });
         this.addressService.socket.emit('broadcast_address', { type: ADD, data: address });
-        const relativeUrl = '../../details';
-        this.newMessage(address, relativeUrl);
+        const url = '/details';
+        this.newMessage(address, url);
       });
     }
   }
@@ -125,7 +125,7 @@ export class EditAddressComponent implements OnInit {
 
   newMessage(address, url) {
     this.data.changeMessage(address);
-    this.router.navigate([url], { relativeTo: this.route });
+    this.router.navigate([url]);
   }
 
 }

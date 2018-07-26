@@ -5,18 +5,14 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
 import { AddressDetailsComponent } from './address-details/address-details.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
-//list
-export const routes: Routes = [{ path: 'home', component: HomeComponent },
-{
-  path: 'list',
-  children: [{
-    path: '', component: AddressListComponent
-  },
+export const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: "", redirectTo: 'list', pathMatch: 'full' },
+  { path: 'list', component: AddressListComponent },
   { path: 'details', component: AddressDetailsComponent },
   { path: 'edit', component: EditAddressComponent },
-  { path: 'new/:flag', component: EditAddressComponent }]
-},
-{ path: 'about', component: AboutComponent }];
+  { path: 'new/:flag', component: EditAddressComponent },
+  { path: 'about', component: AboutComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

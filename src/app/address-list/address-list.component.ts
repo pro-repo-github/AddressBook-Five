@@ -50,7 +50,7 @@ export class AddressListComponent implements AfterViewInit {
 
   newMessage(address: any) {
     this.data.changeMessage(address);
-    this.router.navigate(['/list/details']);
+    this.router.navigate(['/details']);
   }
 }
 
